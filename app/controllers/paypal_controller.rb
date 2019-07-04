@@ -1,38 +1,76 @@
+require 'paypal-sdk-rest'
+include PayPal::SDK::REST
+include PayPal::SDK::Core::Logging
+
 class PaypalController < ApplicationController
-  def index
-    PayPal::SDK.configure(
-      :mode      => "sandbox",
-      :app_id    => "APP-80W284485P519543T",
-      :username  => "cheremacbook-facilitator_api1.gmail.com",
-      :password  => "TKXE8Z9N3NBXHE22",
-      :signature => "APRsl41frcRN4wLKAFMK7LzISTweApuRw.M3L6FzX.bsQ.IuPX.Efv9u" )
+  skip_before_action :verify_authenticity_token
 
-    @api = PayPal::SDK::Merchant.new
 
-    # Build request object
-    @do_direct_payment = @api.build_do_direct_payment({
-      :DoDirectPaymentRequestDetails => {
-        :PaymentAction => "Sale",
-        :PaymentDetails => {
-          :OrderTotal => {
-            :currencyID => "INR",
-            :value => "1" },
-          :NotifyURL => "http://localhost:3000/samples/merchant/ipn_notify" },
-        :CreditCard => {
-          :CreditCardType => "Visa",
-          :CreditCardNumber => "4904202183894535",
-          :ExpMonth => 12,
-          :ExpYear => 2022,
-          :CVV2 => "962" } } })
+  def checkout
+    @payment = Payment.new(payment_details)
 
-    # Make API call & get response
-    @response = @api.do_direct_payment(@do_direct_payment)
-
-    # Access Response
-    if @response.success?
-      Rails.logger.info "Result : " + @response.TransactionID
+    # Create Payment and return status
+    if @payment.create
+      render json: {success: true, paymentID: @payment.id}
     else
-      Rails.logger.info "Result : " + @response.Errors
+      render json: {success: false}
     end
+  end
+
+  def execute
+    payment = PayPal::SDK::REST::Payment.find(permited_payment_details[:paymentID])
+
+    if payment.execute(payer_id: permited_payment_details[:payerID])
+      render json: { msg: 'Payment Complete' }
+    else
+      render json: { msg: payment.error }
+    end
+  end
+
+  private
+
+
+  def permited_payment_details
+    params.permit(:paymentID, :payerID)
+  end
+
+  def payment_details
+    {
+      :intent =>  "sale",
+
+      # ###Payer
+      # A resource representing a Payer that funds a payment
+      # Payment Method as 'paypal'
+      :payer =>  {
+        :payment_method =>  "paypal" },
+
+      # ###Redirect URLs
+      :redirect_urls => {
+        :return_url => "http://localhost:3000/execute",
+        :cancel_url => "http://localhost:3000/" },
+
+      # ###Transaction
+      # A transaction defines the contract of a
+      # payment - what is the payment for and who
+      # is fulfilling it.
+      :transactions =>  [{
+
+        # Item List
+        :item_list => {
+          :items => [{
+            :name => "item",
+            :sku => "item",
+            :price => "0.01",
+            :currency => "USD",
+            :quantity => 1 }]},
+
+        # ###Amount
+        # Let's you specify a payment amount.
+        :amount =>  {
+          :total =>  "0.01",
+          :currency =>  "USD" },
+        :description =>  "This is the payment transaction description." }
+      ]
+    }
   end
 end

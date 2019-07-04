@@ -1,27 +1,25 @@
 test: &default
 
   # Credentials for REST APIs
-  client_id: EBWKjlELKMYqRNQ6sYvFo64FtaRLRR5BdHEESmha49TM
-  client_secret: EO422dn3gQLgDbuwqTjzrFgFtaRLRR5BdHEESmha49TM
+  client_id: AbwX_JN3O0gNAmnQj-bX81Cmv4WwY_EPRqrjR5WqYZkXxkeXNLFEiqKOolCfKFDnHbSsPYIlSyfWCK_S
+  client_secret: EEjnV2id6n8k7KVilRt46ZjniiA2O9cPdL0-1Nsz2VT88MaOzT9gcMxoeVqq_sjOSFNEI0k_Ic0YdXM2
 
   # Mode can be 'live' or 'sandbox'
   mode: sandbox
 
   # Credentials for Classic APIs
   app_id: APP-80W284485P519543T
-  username: jb-us-seller_api1.paypal.com
-  password: WX4WTU3S8MY44S7F
-  signature: AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy
+  username: cheremacbook-facilitator2_api1_api1.gmail.com
+  password: HKMHJQTT2CT5YJKC
+  signature: AzFmRN2alSXsVcRQ-bkJDjsW0iFTAwl.qaWoQtUIsTkqWuPDw-g-xK8R
   # # With Certificate
   # cert_path: "config/cert_key.pem"
-  sandbox_email_address: Platform.sdk.seller@gmail.com
+  #sandbox_email_address: Platform.sdk.seller@gmail.com
 
   # # IP Address
   # ip_address: 127.0.0.1
   # # HTTP Proxy
   # http_proxy: http://proxy-ipaddress:3129/
-
-  # verbose_logging: true
 
 development:
   <<: *default

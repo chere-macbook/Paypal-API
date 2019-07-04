@@ -7,9 +7,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
 
   <body>
-    <%= yield %>
+    <div class='main-div'>
+      <div class='header'>
+        <div class="heading">
+          <h4> PayPal API Demo </h4>
+        </div>
+
+      </div>
+      <div class='middle-content'>
+        <%= yield %>
+      </div>
+      <div class='footer'>
+        <div class="footer-content">
+          <p>&copy; 2019 <p>
+        </div>
+      </div>
   </body>
 </html>

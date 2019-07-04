@@ -1,3 +1,42 @@
 // Place all the styles related to the paypal controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.main-div {
+  float: left;
+  width: 100%;
+  display: block;
+
+  .header {
+    background-color: #cccccc;
+    height: 62px;
+
+    .heading {
+      width: 20%;
+      text-align: center;
+      height: 100%;
+      padding-top: 1px;
+    }
+  }
+
+  .middle-content {
+    margin-top: 1%;
+    text-align: center;
+    height: 80vh;
+
+    .description {
+      text-align: left;
+    }
+  }
+
+  .footer {
+    background-color: #cccccc;
+    margin-top: auto;
+    height: 35px;
+
+    .footer-content {
+      text-align: center;
+      height: 100%;
+      padding-top: 1px;
+    }
+  }
+}
