@@ -20,4 +20,4 @@ On Failure it will popup error message
 
 
 
-![Paypal Checkout Demo](paypal_poc/demo.gif)
+![Paypal Checkout Demo](demo.gif)
