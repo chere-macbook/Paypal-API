@@ -12,3 +12,7 @@ Install the Rails Application
 # NOTE
 On Success it will popup with paymentID
 On Failure it will popup error message
+
+
+
+![Paypal Checkout Demo](paypal_poc/demo.gif)
