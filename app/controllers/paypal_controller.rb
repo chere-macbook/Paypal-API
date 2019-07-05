@@ -21,9 +21,9 @@ class PaypalController < ApplicationController
     payment = PayPal::SDK::REST::Payment.find(permited_payment_details[:paymentID])
 
     if payment.execute(payer_id: permited_payment_details[:payerID])
-      render json: { msg: 'Payment Complete' }
+      render json: { success: true, msg: "Payment Complete for #{permited_payment_details[:paymentID]}" }
     else
-      render json: { msg: payment.error }
+      render json: { success: false, msg: payment.error }
     end
   end
 

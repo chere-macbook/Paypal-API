@@ -1,25 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+This is as basic Paypal Checkout Button sample code
+Install the Rails Application
 
-* Ruby version
+visit : localhost:3000
+Click On Paypal Checkout Button
+Fill your sandbox buyer account details
+Click on Pay
 
-* System dependencies
+On Success it will popup with paymentID
+On Failure it will popup error message
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
 # Paypal-API
