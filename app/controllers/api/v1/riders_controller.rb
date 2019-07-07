@@ -13,6 +13,6 @@ class Api::V1::RidersController < ApplicationController
   private
 
   def rider_params
-  	params.require(:rider).permit(:name, :age, :contact_number)
+  	params.require(:rider).permit(:name, :email, :contact_number)
   end
 end
