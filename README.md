@@ -19,6 +19,7 @@ POST https://localhost:3000/api/v1/riders
 }
 ```
 
+# Make Payment #
 ```
 POST https://localhost:3000/api/v1/bookings/:id/make_payment
 
