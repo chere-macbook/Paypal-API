@@ -1,4 +1,4 @@
-class Ride
+class Ride < ApplicationRecord
   RIDE_DETAIL = {
     driver_id: Driver::DRIVER_DETAIL[1],
     rider_id: Rider::RIDER_DETAIL[1],

@@ -1,4 +1,14 @@
-class BookingsController < ApplicationController
+class Api::V1::BookingsController < ApplicationController
+
+
+  def create
+    @ride = Ride.new(ride_params)
+    if @ride.save
+     render json: @ride, status: :created, location: api_v1_ride_url(@ride)
+    else
+     render json: @ride.errors, status: :unprocessable_entity
+    end
+  end
 
   def make_payment
     api_direct_payment
@@ -25,6 +35,10 @@ class BookingsController < ApplicationController
 
 
   private
+
+  def rider_params
+  	params.require(:ride).permit(:driver_id, :rider_id, :source, :destination)
+  end
 
   def api_direct_payment
     require 'paypal-sdk-merchant'
