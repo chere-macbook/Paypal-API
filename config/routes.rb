@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   root 'paypal#index'
 
   namespace :api do
-	  namespace :v1 do
-	   resources :rider
-	  end
-	 end
+    namespace :v1 do
+      resources :rider, only: [:create]
+      resources :drivers, only: [:create]
+      resources :bookings, only: [:create]
+    end
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
