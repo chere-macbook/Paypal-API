@@ -7,17 +7,19 @@ Install the Rails Application
 
 1 visit : localhost:3000
 
-2 Click On Paypal Checkout Button
+2. Create Rider
 
-3 Fill your sandbox buyer account details
+```
+POST https://localhost:3000/api/v1/riders
 
-4 Click on Pay
+{
+"name": "Jane Doe",
+"email": "jane@hotmail.com",
+"contact_number": "888877665"
+}
+```
 
 # NOTE
 On Success it will popup with paymentID
 
 On Failure it will popup error message
-
-
-
-![Paypal Checkout Demo](demo.gif)
