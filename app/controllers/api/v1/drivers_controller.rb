@@ -16,7 +16,7 @@ class Api::V1::DriversController < ApplicationController
   private
 
   def driver_params
-    params.require(driver).permit(:name, :age, :car_number)
+    params.require(:driver).permit(:name, :age, :car_number)
   end
 
 end

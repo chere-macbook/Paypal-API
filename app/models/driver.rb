@@ -6,4 +6,6 @@ class Driver < ApplicationRecord
       age: 35
     }
   }
+
+  validates :name, presence: true
 end

@@ -4,7 +4,7 @@ class Api::V1::BookingsController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
     if @ride.save
-     render json: @ride, status: :created, location: api_v1_ride_url(@ride)
+     render json: @ride, status: :created, location: api_v1_bookings_url(@ride)
     else
      render json: @ride.errors, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class Api::V1::BookingsController < ApplicationController
 
   private
 
-  def rider_params
+  def ride_params
   	params.require(:ride).permit(:driver_id, :rider_id, :source, :destination)
   end
 

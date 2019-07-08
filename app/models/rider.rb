@@ -1,4 +1,5 @@
-class Rider
+class Rider < ApplicationRecord
+
   RIDER_DETAIL =
     { 1 =>  {
         name: 'John Doe',
@@ -13,4 +14,8 @@ class Rider
       }
     }
   }
+
+
+  validates :name, presence: true
+
 end

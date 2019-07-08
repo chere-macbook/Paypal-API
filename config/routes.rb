@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :rider, only: [:create]
+      resources :riders, only: [:create]
       resources :drivers, only: [:create]
       resources :bookings, only: [:create] do
         member do
